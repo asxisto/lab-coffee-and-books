@@ -77,7 +77,7 @@ router.post('/place/:id/edit', (req, res, next) => {
   // const name = req.body.place.name;
   // const type = req.body.place.location.type;
 
-  Place.findByIdAndUpdate(id, { name, type, latitude, longitude })
+  Place.findByIdAndUpdate(id, { name, 'location.type': type, 'location.coordinates.0': latitude, 'location.coordinates.1': longitude })
     .then(() => {
       res.redirect(`/place/${id}`);
     })
