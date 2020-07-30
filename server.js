@@ -45,8 +45,7 @@ const onError = error => {
 const onListening = server => {
   const { port } = server.address();
   debug(`Node server listening on ${port}`);
-  if (process.env.NODE_ENV === 'development')
-    debug(`Visit http://localhost:${port} to develop your app`);
+  if (process.env.NODE_ENV === 'development') debug(`Visit http://localhost:${port} to develop your app`);
 };
 
 const initiate = () => {
@@ -61,7 +60,8 @@ mongoose
   .connect(URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => {
     debug(`Database connected to URI "${URI}"`);

@@ -1,0 +1,24 @@
+<h1>{{ place.name }}</h1>
+
+{{!-- <form action="/place/{{ place.id }}" method="POST"> --}}
+<form method="POST">
+  <label for="name-input">Place Name</label>
+  <input id="name-input" type="text" value="{{ place.name }}" name="name">
+
+  <label>Type:</label>
+  <select id="type-list" name="type" value="{{place.location.type}}">
+    <option value="" selected disabled hidden>{{place.location.type}}</option>
+    <option value="Coffee Shop">Coffee Shop</option>
+    <option value="Bookstore">Bookstore</option>
+  </select>
+
+  <label for="latitude-input">Latitude</label>
+  <input id="latitude-input" type="text" value="{{ place.location.coordinates.[1] }}" name="latitude">
+
+  <label for="longitude-input">Longitude</label>
+  <input id="longitude-input" type="text" value="{{ place.location.coordinates.[0] }}" name="longitude">
+
+  <div id="map-container"></div>
+
+  <button>Update Place</button>
+</form>

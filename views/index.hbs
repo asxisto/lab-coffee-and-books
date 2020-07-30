@@ -1,2 +1,25 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Your favorite places</h1>
+
+{{!-- <button id="trigger-location">Locate me!</button>
+
+<form action="/restaurant/search" method="GET">
+  <label for="latitude-input">Latitude</label>
+  <input id="latitude-input" type="text" placeholder="Latitude" name="latitude">
+  
+  <label for="longitude-input">Longitude</label>
+  <input id="longitude-input" type="text" placeholder="Longitude" name="longitude">
+
+  <label for="radius-input">Radius</label>
+  <input id="radius-input" type="text" placeholder="Radius" name="radius" value="10000">
+
+  <button>Search</button>
+</form>
+
+<div id="map-container"></div>
+ --}}
+{{#each places}}
+  <a href="/place/{{ _id }}">
+    <h3>{{ name }}</h3>
+  </a>
+  <span><a href="/place/{{ id }}/edit">Update </a></span><span><a href="/place/{{ id }}/delete"> Delete</a></span>
+{{/each}}
