@@ -26,25 +26,6 @@ router.post('/create', (req, res, next) => {
     });
 });
 
-const metersToDegrees = meters => (meters / 1000 / 40000) * 360;
-
-router.get('/search', (req, res, next) => {
-  const latitude = req.query.latitude;
-  const longitude = req.query.longitude;
-  const radius = req.query.radius;
-
-  Place.find()
-    .where('location')
-    .within()
-    .circle({ center: [longitude, latitude], radius: metersToDegrees(radius) })
-    .then(places => {
-      res.render('place/results', { places });
-    })
-    .catch(error => {
-      next(error);
-    });
-});
-
 router.get('/place/:id', (req, res, next) => {
   console.log(req.body);
   const id = req.params.id;
